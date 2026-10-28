@@ -1,0 +1,168 @@
+AY: 2026-27
+Class: TE-AI&DS
+Semester: V
+Course Code: 2015119
+Course Name: Agile Software Development & DevOps Lab
+
+Experiment No.: 07
+Title: To deploy a serverless function using AWS Lambda
+
+Aim
+To deploy a serverless function using AWS Lambda by creating, configuring, testing, and executing a Lambda function in the AWS Cloud environment.
+
+Objectives
+1. Understand the concept of serverless computing.
+2. Understand the working of AWS Lambda.
+3. Create and configure a Lambda function.
+4. Write and deploy code using AWS Lambda.
+5. Test the Lambda function using sample event data.
+6. Understand event-driven execution.
+7. Monitor Lambda function execution using AWS CloudWatch.
+8. Understand the complete workflow of creating, deploying, and executing a serverless function.
+
+Theory
+
+1. Serverless Computing
+Serverless computing is a cloud computing model in which developers run application code without managing servers or the underlying infrastructure. The cloud provider manages resource allocation, scaling, availability, and maintenance, allowing developers to focus on writing and deploying code.
+
+2. AWS Lambda
+AWS Lambda is a serverless computing service provided by Amazon Web Services (AWS). It executes code without requiring developers to provision or manage servers. A Lambda function runs when triggered by an event and uses the required computing resources automatically.
+
+Basic workflow:
+Event → Lambda Function → Code Execution → Response
+
+Lambda supports runtimes such as Python, Java, JavaScript/Node.js, C#, Go, and Ruby, subject to AWS runtime availability.
+
+3. Lambda Function
+A Lambda function is a small piece of code designed to perform a specific task. It contains the application logic executed when the function is invoked.
+
+Example Python function:
+
+    def lambda_handler(event, context):
+        return {
+            "statusCode": 200,
+            "body": "Hello from AWS Lambda!"
+        }
+
+Here, `event` contains information about the event that invoked the function, while `context` provides information about the execution environment.
+
+4. Event-Driven Execution
+AWS Lambda follows an event-driven architecture. A function may be invoked by events from services such as Amazon S3, API Gateway, Amazon SQS, DynamoDB, or Amazon EventBridge. For example, a function can run when a file is uploaded to an S3 bucket or an API request is received.
+
+5. Deployment and Execution
+To deploy a Lambda function, create it in the AWS Lambda console, select the runtime, write or upload the code, configure permissions, deploy the code, and test it using a sample event.
+
+General process:
+Create Function → Select Runtime → Write Code → Configure → Deploy → Test → Monitor
+
+6. Monitoring
+AWS Lambda integrates with Amazon CloudWatch for monitoring and logging. CloudWatch can record execution logs and provide metrics such as duration, invocation count, and errors. These records help developers troubleshoot and monitor the function.
+
+7. Advantages of AWS Lambda
+- No server management is required.
+- Automatic scaling according to workload.
+- Usage-based pricing.
+- Convenient deployment and testing.
+- Event-driven execution.
+- Integration with various AWS services.
+- Reduced infrastructure management.
+
+Tools Required
+- Computer with a web browser and internet access
+- AWS account with permission to create and invoke Lambda functions
+- AWS Lambda console
+- Amazon CloudWatch for viewing logs
+
+Procedure
+
+Part A: Create the Lambda function
+1. Sign in to the AWS Management Console.
+2. Open the AWS Lambda service.
+3. Choose “Create function”.
+4. Select “Author from scratch”.
+5. Enter a function name, for example `HelloLambda`.
+6. Select a Python runtime available in the console.
+7. Choose or create an execution role with the permissions required for basic Lambda execution and CloudWatch logging.
+8. Choose “Create function”.
+
+Part B: Add the code
+1. Open the function's code editor.
+2. Replace the starter code with the following Python code:
+
+    import json
+
+    def lambda_handler(event, context):
+        name = event.get("name", "Student")
+        message = f"Hello, {name}! Welcome to AWS Lambda."
+        return {
+            "statusCode": 200,
+            "body": json.dumps({"message": message})
+        }
+
+3. Save or deploy the code using the console's “Deploy” button.
+
+Part C: Test the function
+1. Choose “Test” in the Lambda console.
+2. Create a new test event named `HelloLambdaTest`.
+3. Use the following JSON event:
+
+    {
+      "name": "Student"
+    }
+
+4. Save the test event.
+5. Click “Test” to invoke the function.
+6. Review the execution result. The response body should contain a greeting for `Student`.
+7. Change the event value to another name and test again to observe how the input changes the response.
+
+Part D: Monitor using CloudWatch
+1. Open the function's “Monitor” tab.
+2. Open the CloudWatch logs or select the link to view logs.
+3. Open the relevant log group and the latest log stream.
+4. Review the invocation logs, duration, and any reported errors.
+5. If no log stream is immediately visible, wait briefly and refresh.
+
+Output / Observations
+1. The Lambda function `HelloLambda` was created with a Python runtime.
+2. The function code was deployed successfully.
+3. A test event containing `{"name": "Student"}` invoked the function.
+4. The function returned an HTTP-style status code of `200` and a greeting message in the response body.
+5. CloudWatch was used to review execution logs and monitoring information.
+
+Expected response shape:
+
+    {
+      "statusCode": 200,
+      "body": "{\"message\": \"Hello, Student! Welcome to AWS Lambda.\"}"
+    }
+
+Result
+A serverless function was created, configured, deployed, and tested using AWS Lambda with sample event data. CloudWatch monitoring was reviewed to understand execution logging and troubleshooting.
+
+Conclusion
+AWS Lambda is a serverless computing service that executes code without requiring users to manage servers. This experiment demonstrated the creation, configuration, deployment, testing, and monitoring of a Lambda function. It helped explain serverless computing, event-driven execution, and the role of CloudWatch in monitoring Lambda functions.
+
+Precautions
+1. Use an AWS account and region where you have permission to create Lambda functions.
+2. Choose a supported runtime from the options currently shown in the AWS console.
+3. Do not place passwords, access keys, or other secrets directly in the function code.
+4. Follow the principle of least privilege when configuring the execution role.
+5. Review AWS pricing and remove resources that are no longer required.
+6. Test with valid JSON event data and inspect the execution result and CloudWatch logs if an error occurs.
+
+Questions to be answered by students
+
+Q1. What is AWS Lambda?
+Answer: AWS Lambda is a serverless computing service provided by AWS that runs code without requiring users to manage servers. It can execute a function when triggered by an event and charges according to the applicable usage and pricing model.
+
+Q2. What is the purpose of Amazon CloudWatch in AWS Lambda?
+Answer: Amazon CloudWatch is used to monitor Lambda functions and collect execution logs and performance information. It helps developers review function execution, errors, duration, and other metrics for troubleshooting and monitoring.
+
+Q3. What is serverless computing?
+Answer: Serverless computing is a cloud model in which the cloud provider manages the underlying infrastructure so developers can focus on application code.
+
+Q4. What are `event` and `context` in a Lambda handler?
+Answer: `event` contains the input data for an invocation. `context` provides information about the invocation and runtime environment.
+
+Q5. Give two examples of services that can trigger Lambda.
+Answer: Amazon S3 and Amazon API Gateway. Other examples include SQS, DynamoDB, and EventBridge.

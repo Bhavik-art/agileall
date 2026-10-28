@@ -1,0 +1,9 @@
+{
+  "title": "To deploy a serverless function using AWS Lambda",
+  "description": "Create, deploy, test, and monitor a Python Lambda function using a sample event and CloudWatch.",
+  "files": [
+    "lambda_function.py",
+    "test_event.json",
+    "README.md"
+  ]
+}

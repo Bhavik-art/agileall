@@ -1,0 +1,139 @@
+AY: 2026-27
+Class: TE-AI&DS
+Semester: V
+Course Code: 2015119
+Course Name: Agile Software Development & DevOps Lab
+
+Experiment No.: 04
+Title: To containerize applications using Docker
+
+Aim
+To containerize applications using Docker.
+
+Objective
+To understand Docker architecture and the lifecycle of containers, and to learn essential Docker commands for managing images and interacting with containers. This enables users to package, distribute, and run applications consistently across different environments.
+
+Theory
+Docker is a containerization technology that allows developers to package applications and their dependencies into lightweight, portable containers. These containers can run on systems that support Docker, making it easier to deploy and manage applications in different environments.
+
+Docker Architecture
+1. Docker Client: The primary interface used to interact with Docker. It sends commands to the Docker daemon and displays the output.
+2. Docker Daemon: The background process that runs on the host machine and manages Docker objects such as images, containers, networks, and volumes.
+3. Docker Registry: A storage and distribution system for Docker images. It allows developers to share and distribute images.
+4. Docker Image: A lightweight, standalone, executable package containing application code, runtime, libraries, dependencies, and system tools.
+5. Docker Container: A runtime instance of a Docker image. It is isolated from the host system and other containers, providing a consistent environment for an application.
+
+Container Lifecycle
+1. Create: Create a container from an image.
+2. Start: Start a previously created container using `docker start`.
+3. Run: Interact with the running application or execute commands in the container.
+4. Stop: Stop a running container using `docker stop`.
+5. Remove: Remove a stopped container using `docker rm`.
+
+Tools Required
+- Desktop/Laptop
+- Docker Desktop
+- Windows PowerShell or Command Prompt
+- WSL 2 on supported Windows configurations
+
+Procedure
+
+Part A: Install Docker Desktop on Windows
+1. Open the official Docker website and download Docker Desktop for Windows.
+2. Run the Docker Desktop installer and follow the installation prompts.
+3. If prompted to use WSL 2, install or update the WSL 2 components using the official Microsoft instructions.
+4. Open PowerShell as Administrator and run `wsl --set-default-version 2` if WSL 2 is installed and this setting is required.
+5. Restart the computer if the installer requests it.
+6. Open Docker Desktop and accept the terms if prompted.
+7. Wait until Docker Desktop indicates that the Docker engine is running.
+8. Open Command Prompt or PowerShell and verify the installation using `docker --version` and `docker info`.
+
+Part B: Verify Docker and download an image
+1. Open Command Prompt or PowerShell.
+2. Check the Docker version:
+   `docker --version`
+3. Download the Ubuntu image:
+   `docker pull ubuntu`
+4. List locally available images:
+   `docker images`
+
+Part C: Run an Ubuntu container
+1. Start an interactive Ubuntu container:
+   `docker run -it --name ubuntu-lab ubuntu /bin/bash`
+2. At the Ubuntu shell prompt, run a basic command such as `cat /etc/os-release`.
+3. Type `exit` to leave the shell. This normally stops the container.
+4. List running containers:
+   `docker ps`
+5. List all containers, including stopped containers:
+   `docker ps -a` or `docker container ls -a`
+
+Part D: Stop and remove a container
+1. If the container is still running, stop it:
+   `docker stop ubuntu-lab`
+2. Remove the container:
+   `docker rm ubuntu-lab`
+3. Confirm that it no longer appears in `docker ps -a`.
+4. If you want to remove the downloaded image after removing its containers, run:
+   `docker image rm ubuntu`
+5. Verify the image list using `docker images`.
+
+Part E: Useful Docker commands
+- `docker --version` — display the installed Docker version.
+- `docker pull ubuntu` — download the Ubuntu image.
+- `docker images` — list local images.
+- `docker run -it ubuntu /bin/bash` — create and run an interactive Ubuntu container.
+- `docker ps` — list running containers.
+- `docker ps -a` — list all containers.
+- `docker stop <container_id_or_name>` — stop a running container.
+- `docker rm <container_id_or_name>` — remove a container.
+- `docker image rm <image_name_or_id>` — remove an image if no container is using it.
+- `docker --help` — list Docker commands.
+
+Output / Observations
+1. `docker --version` displays the installed Docker version.
+2. `docker pull ubuntu` downloads the Ubuntu image.
+3. `docker images` displays the downloaded Ubuntu image.
+4. `docker run -it --name ubuntu-lab ubuntu /bin/bash` opens an interactive shell inside the container.
+5. `docker ps` displays running containers, while `docker ps -a` displays running and stopped containers.
+6. After stopping and removing `ubuntu-lab`, it no longer appears in the container list.
+7. The Ubuntu image can be removed after containers that use it have been removed.
+
+Result
+Docker Desktop was used to download an Ubuntu image, create and interact with a container, list containers and images, and stop and remove the container. The essential Docker commands and container lifecycle were demonstrated.
+
+Conclusion
+This experiment demonstrated how Docker packages and runs software in isolated containers. Docker images provide a reusable template, while containers are running or stopped instances created from images. Docker commands make it possible to manage the container lifecycle and help run applications consistently across supported environments.
+
+Precautions
+1. Ensure Docker Desktop is running before using Docker commands.
+2. If Docker reports that the daemon cannot be reached, check Docker Desktop and its engine status.
+3. Use the actual container name or ID shown by `docker ps -a`; do not copy an ID from another system.
+4. Remove containers before attempting to remove an image that is still in use.
+5. Do not run destructive cleanup commands unless you understand which containers or images will be deleted.
+6. Installation prompts and WSL requirements may vary by Docker Desktop version and Windows configuration.
+
+Viva Questions and Answers
+
+Q1. What is the difference between containerization and virtualization?
+Answer: Containerization runs applications and their dependencies in isolated containers while sharing the host operating system kernel. Containers are usually lightweight and start quickly. Virtualization uses a hypervisor to run virtual machines, each with its own operating system and allocated virtual hardware. Virtual machines generally use more resources than containers. Docker is commonly used for containerization, while VMware and VirtualBox are examples of virtualization software.
+
+Q2. What is Docker Daemon?
+Answer: The Docker daemon, `dockerd`, is a background service that manages Docker objects such as containers, images, networks, and volumes. It receives requests from the Docker client through the Docker API and performs the requested operations. For example, when a user runs `docker run ubuntu`, Docker obtains the image if necessary and creates and starts a container.
+
+Q3. What is a Docker image?
+Answer: A Docker image is a packaged, read-only template used to create containers.
+
+Q4. What is a Docker container?
+Answer: A Docker container is an isolated runtime instance of a Docker image.
+
+Q5. What is the use of `docker pull`?
+Answer: It downloads an image from a registry to the local machine.
+
+Q6. What is the difference between `docker ps` and `docker ps -a`?
+Answer: `docker ps` lists running containers; `docker ps -a` lists all containers, including stopped ones.
+
+Q7. What does `docker stop` do?
+Answer: It requests a running container to stop.
+
+Q8. What does `docker rm` do?
+Answer: It removes a container, typically after it has stopped.

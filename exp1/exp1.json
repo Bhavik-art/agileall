@@ -1,0 +1,12 @@
+{
+  "title": "Agile Software Project Lifecycle using Jira with DevOps Pipeline Integration",
+  "description": "Implement a Student Management System workflow with Jira Scrum, GitHub branches and Pull Requests, and GitHub Actions CI.",
+  "links": [
+    "https://www.atlassian.com/software/jira",
+    "https://github.com/",
+    "https://git-scm.com/downloads",
+    "https://www.python.org/downloads/",
+    "https://code.visualstudio.com/",
+    "https://github.com/Aditya210606/student-management-devops/actions"
+  ]
+}

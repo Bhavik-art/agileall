@@ -1,0 +1,9 @@
+{
+  "title": "To containerize applications using Docker",
+  "description": "Understand Docker architecture and container lifecycle, then pull an Ubuntu image and manage containers with Docker commands.",
+  "files": [
+    "Dockerfile",
+    "app.py",
+    "docker_commands.txt"
+  ]
+}

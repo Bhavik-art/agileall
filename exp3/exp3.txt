@@ -1,0 +1,144 @@
+AY: 2026-27
+Class: TE-AI&DS
+Semester: V
+Course Code: 2015119
+Course Name: Agile Software Development & DevOps Lab
+
+Experiment No.: 03
+Title: To set up a Continuous Integration Pipeline using Jenkins/GitHub Actions
+
+Aim
+To set up and execute a Continuous Integration (CI) pipeline using Jenkins.
+
+Objectives
+1. Understand the concept of Continuous Integration (CI).
+2. Understand the Jenkins automation server.
+3. Create and configure Jenkins Freestyle Projects.
+4. Execute Shell/Batch commands using Jenkins.
+5. Compile and execute Java programs using Jenkins.
+6. Perform parameterized builds in Jenkins.
+7. Execute Python programs using Jenkins.
+
+Tools Required
+Hardware:
+- Desktop/Laptop
+
+Software:
+- Jenkins
+- Java JDK
+- Python
+- Web browser
+- Windows Command Prompt / PowerShell
+
+Theory
+Continuous Integration (CI) is a software development practice in which developers frequently integrate code changes into a shared repository. Each integration is verified automatically by building and testing the application, helping detect errors at an early stage.
+
+Jenkins is an open-source automation server used to automate stages of software development such as building, testing, and deploying applications. Jenkins supports CI by executing predefined tasks whenever a build is triggered.
+
+A Freestyle Project is one of the simplest Jenkins project types and can run shell commands, batch commands, Java programs, Python programs, and other automation tasks.
+
+A parameterized build lets users provide input values at runtime. These parameters can be used by build commands or programs during execution.
+
+This experiment uses Jenkins Freestyle Projects to execute commands, run Java programs, accept runtime parameters, and execute Python programs. The build status and program output are verified through Console Output.
+
+Procedure
+
+Preparation
+1. Install and start Jenkins, then open the Jenkins dashboard in a web browser.
+2. Ensure the required Java JDK and Python interpreter are installed on the machine where the build will run.
+3. Confirm that Jenkins has permission to access the project folder and required executables.
+4. In Jenkins, select “New Item”, enter the project name, select “Freestyle project”, and click “OK”.
+
+Example 1: Run a simple Shell/Batch command
+1. Create a Freestyle project named `Example1`.
+2. Open the project configuration and locate the Build section.
+3. On Windows, add “Execute Windows batch command”; on a compatible Unix agent, add “Execute shell”.
+4. Enter a simple command to print a message, such as `echo Hello from Jenkins CI`.
+5. Save the project and click “Build Now”.
+6. Open the build number and select “Console Output” to verify the message and build status.
+
+Example 1.2: Run a shell script with parameters
+1. Create a script file in a local project directory and test it from the terminal.
+2. Test the script with no argument, one argument, and two arguments if the script supports them.
+3. Configure a Jenkins build step to change to the script directory and execute the script.
+4. Use the correct command for the operating system and ensure the Jenkins service account can access the file.
+5. Build the project and verify the output in Console Output.
+
+Example 2: Compile and run a Java program
+1. Create `HelloJenkins.java` and test it locally.
+2. Create a Jenkins Freestyle project named `Example2`.
+3. In the Build section, add a Windows batch command (Windows) or shell command (Unix-like agent).
+4. Change to the folder containing the Java file, compile it using `javac HelloJenkins.java`, and run it using `java HelloJenkins`.
+5. Save and build the project.
+6. Verify the program output and build result in Console Output.
+
+Example 3: Parameterized build
+1. Create a Freestyle project named `Example3`.
+2. Select “This project is parameterized”.
+3. Add a String Parameter named `USER_NAME` and set a default value such as `Student`.
+4. Add a Choice Parameter named `CITY` with one city per line, for example `Mumbai`, `Pune`, and `Nashik`.
+5. Add a build step that prints the parameter values. On Windows batch, use `%USER_NAME%` and `%CITY%`; on a Unix shell, use `$USER_NAME` and `$CITY`.
+6. Save the project and choose “Build with Parameters”.
+7. Enter/select values, start the build, and verify the displayed values in Console Output.
+
+Example 4: Java multiplication table with a parameter
+1. Create `MultiplicationTable.java` and test it locally.
+2. Create a Freestyle project named `Example4` and enable “This project is parameterized”.
+3. Add a String Parameter named `num` with a default value such as `5`.
+4. Configure the build step to compile the Java file and execute it with the selected parameter.
+5. Select “Build with Parameters”, enter a number, and run the build.
+6. Check the multiplication table in Console Output.
+
+Example 5: Run a Python program with a parameter
+1. Create `multiplication_table.py` and test it locally.
+2. Create a Freestyle project named `Example5` and enable “This project is parameterized”.
+3. Add a String Parameter named `num` with a default value such as `5`.
+4. Configure the build step to execute the Python script with the parameter. Use `python multiplication_table.py %num%` on Windows or `python3 multiplication_table.py "$num"` on a Unix-like agent, adjusting the interpreter command if needed.
+5. Select “Build with Parameters”, enter a number, and run the build.
+6. Verify the output in Console Output.
+
+Example CI pipeline using GitHub Actions (alternative)
+1. Store the application and test files in a GitHub repository.
+2. Create `.github/workflows/ci.yml`.
+3. Configure the workflow to run on pushes and pull requests.
+4. Set up the required runtime, run the program's tests, and review the Actions tab for the result.
+5. A successful run indicates that the configured automated checks passed.
+
+Observation / Output
+- Example 1: Jenkins executes a simple command and displays its output in Console Output.
+- Example 2: Jenkins compiles and executes the Java program.
+- Example 3: Jenkins reads runtime values for `USER_NAME` and `CITY` and displays them.
+- Example 4: Jenkins passes `num` to the Java multiplication-table program.
+- Example 5: Jenkins passes `num` to the Python multiplication-table program.
+- GitHub Actions alternative: the workflow runs automatically on a push or pull request and reports success or failure.
+
+Result
+The Continuous Integration experiment demonstrates how Jenkins Freestyle Projects can automate commands, compile and run Java programs, accept runtime parameters, and execute Python programs. The output and build status are checked through Jenkins Console Output. A sample GitHub Actions workflow is also included as an alternative CI implementation.
+
+Conclusion
+Jenkins helps automate the build and execution process. Automated builds provide repeatability and help identify errors early. Parameterized builds allow a project to accept values at runtime.
+
+Precautions
+1. Confirm Java and Python are installed on the machine/agent that runs the build.
+2. Ensure `java`, `javac`, and Python are available in the PATH, or use their configured full paths.
+3. Use commands appropriate for the agent operating system; Windows batch and Unix shell syntax are different.
+4. Ensure the Jenkins service account has access to project files.
+5. Review Console Output when a build fails and correct the reported issue before rebuilding.
+
+Viva Questions and Answers
+1. What is Continuous Integration?
+   Continuous Integration is the practice of frequently integrating code changes and automatically building and testing them.
+2. What is Jenkins?
+   Jenkins is an open-source automation server used to automate software development tasks.
+3. What is a Freestyle Project?
+   It is a Jenkins job type configured through the web interface to run build steps and post-build actions.
+4. What is a parameterized build?
+   It is a build that accepts user-provided values at runtime.
+5. Where can the build output be checked?
+   In the build's Console Output page.
+6. What is the purpose of `javac`?
+   It compiles Java source code into bytecode.
+7. What is the purpose of `python` or `python3`?
+   It runs a Python program using the installed Python interpreter.
+8. What is GitHub Actions?
+   It is a workflow automation service integrated with GitHub repositories.

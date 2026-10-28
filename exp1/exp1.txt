@@ -1,0 +1,208 @@
+# Experiment 1: Agile Software Project Lifecycle using Jira with DevOps Pipeline Integration
+
+## Aim
+To study and implement the Agile Software Project Lifecycle using Jira by managing Scrum tasks, tracking development progress, integrating GitHub for version control, and implementing a DevOps Continuous Integration (CI) pipeline using GitHub Actions.
+
+## Objectives
+1. Understand the Agile Software Development lifecycle and Scrum methodology.
+2. Create and manage a software project using Jira.
+3. Create and track Scrum work items such as user stories and tasks using Jira.
+4. Use Git and GitHub for source code management and version control.
+5. Create feature branches for implementing individual requirements.
+6. Create Pull Requests and merge completed changes into the main branch.
+7. Integrate GitHub with Jira for tracking development activities.
+8. Configure a Continuous Integration (CI) pipeline using GitHub Actions.
+9. Automate testing and verification whenever code changes are pushed.
+10. Understand the complete workflow from Jira task creation to development, CI execution, Pull Request, merge, and task completion.
+
+## Requirements
+- Jira account: https://www.atlassian.com/software/jira
+- Git installed: https://git-scm.com/downloads
+- GitHub account: https://github.com/
+- Python 3.12 or compatible Python 3 version: https://www.python.org/downloads/
+- A code editor such as VS Code: https://code.visualstudio.com/
+
+## Step-by-step implementation
+
+### Step 1: Create a Jira project
+1. Open [Jira](https://www.atlassian.com/software/jira).
+2. Create a project named **Student Management System**.
+3. Select the **Scrum** template.
+4. Open the project backlog and Scrum board.
+5. Create work items for student registration, student login, student dashboard, student profile management, student search, student validation, student email validation, unit tests, and CI pipeline configuration.
+
+### Step 2: Create and plan a sprint
+1. Open the Jira **Backlog**.
+2. Add the work items to the backlog.
+3. Create a sprint named `Student Management`.
+4. Set the sprint duration and goal.
+5. Move selected work items into the sprint.
+6. Start the sprint.
+7. Use statuses such as **To Do**, **In Progress**, and **Done** to track progress.
+
+### Step 3: Create a GitHub repository
+1. Open [GitHub](https://github.com/).
+2. Create a repository named `student-management-devops`.
+3. Open a terminal and clone your repository. Replace `YOUR-USERNAME` with your GitHub username.
+
+```bash
+git clone https://github.com/YOUR-USERNAME/student-management-devops.git
+cd student-management-devops
+```
+
+### Step 4: Create the application files
+Create this structure in your repository:
+
+```text
+student-management-devops/
+├── app.py
+├── test_app.py
+├── requirements.txt
+└── .github/
+    └── workflows/
+        └── ci.yml
+```
+
+The `app.py` file in this experiment implements a small in-memory Student Management System with student registration, input validation, email validation, listing, and searching. Data is kept in memory and is reset when the program restarts.
+
+### Step 5: Create unit tests
+The `test_app.py` file contains automated tests for student registration, validation, email validation, and student searching. Run the tests locally from the project directory:
+
+```bash
+python -m unittest -v
+```
+
+Expected result: all tests pass. If a test fails, read the error message, correct the code, and rerun the tests.
+
+### Step 6: Create a feature branch
+Use a separate branch for each Jira work item. For example, for `SCRUM-5`:
+
+```bash
+git checkout -b SCRUM-5-student-validation
+```
+
+After making changes, commit and push them:
+
+```bash
+git add .
+git commit -m "SCRUM-5 Add student validation"
+git push -u origin SCRUM-5-student-validation
+```
+
+Use your actual Jira issue key if it differs from `SCRUM-5`.
+
+### Step 7: Configure GitHub Actions CI
+Create `.github/workflows/ci.yml`. The workflow checks out the repository, sets up Python, installs dependencies, and runs the unit tests on every push and Pull Request.
+
+```yaml
+name: Student Management CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -s requirements.txt ]; then
+            pip install -r requirements.txt
+          fi
+
+      - name: Run tests
+        run: python -m unittest -v
+```
+
+Commit and push the workflow:
+
+```bash
+git add .
+git commit -m "SCRUM-11 Configure CI pipeline"
+git push
+```
+
+### Step 8: Verify the CI pipeline
+1. Open your repository on GitHub.
+2. Select the **Actions** tab.
+3. Open the latest `Student Management CI` workflow run.
+4. Check the checkout, Python setup, dependency installation, and test steps.
+5. Confirm that the workflow succeeds. If it fails, inspect the logs, fix the issue, and push again.
+
+
+
+### Step 9: Create a Pull Request
+1. Open the repository on GitHub.
+2. Select **Pull requests → New pull request**.
+3. Choose `main` as the base branch and your feature branch as the compare branch.
+4. Use a title such as `SCRUM-5 Add student validation`.
+5. Create the Pull Request.
+6. Review the changed files and ensure CI checks pass.
+7. Merge the Pull Request into `main`.
+8. Repeat for other tasks, such as student email validation.
+
+### Step 10: Integrate Jira with GitHub
+1. Open your Jira project.
+2. Find the development integrations or connections section. The exact menu location depends on your Jira setup.
+3. Install or connect **GitHub for Atlassian** if needed.
+4. Authorize access and select the repository.
+5. Include Jira issue keys in branch names, commit messages, and Pull Request titles.
+6. Open a Jira work item and check whether linked development activity appears.
+
+
+### Step 11: Update Jira task statuses
+- **To Do:** Work has not started.
+- **In Progress:** Development is underway.
+- **Done:** The task has been implemented and verified.
+
+Update the status after the corresponding development and testing work is complete.
+
+### Step 12: Verify the complete workflow
+1. Create and plan a task in Jira.
+2. Create a feature branch in GitHub.
+3. Implement the change and commit it.
+4. Push the branch and let GitHub Actions run the tests.
+5. Create a Pull Request and review the changes.
+6. Merge the approved Pull Request into `main`.
+7. Confirm the development activity is linked in Jira, where the integration is configured.
+8. Update the Jira work item status.
+
+## Workflow
+Jira work item → GitHub feature branch → code changes → commit and push → GitHub Actions tests → Pull Request → review → merge → Jira status update.
+
+## Final verification checklist
+- [ ] Jira project and Scrum board created.
+- [ ] Backlog and sprint configured.
+- [ ] GitHub repository created.
+- [ ] Python application implemented.
+- [ ] Unit tests executed successfully.
+- [ ] Feature branch and commits pushed.
+- [ ] GitHub Actions CI workflow passed.
+- [ ] Pull Request created and merged.
+- [ ] Jira–GitHub integration verified, if configured.
+- [ ] Jira work items updated.
+
+## Output
+A Student Management System example was prepared with Jira Scrum task tracking, GitHub version control, feature branches, Pull Requests, and a GitHub Actions CI workflow for automated unit tests.
+
+## Result
+The Agile Software Project Lifecycle using Jira with DevOps pipeline integration was studied and implemented. The workflow demonstrates task management in Jira, source control in GitHub, automated verification with GitHub Actions, Pull Request review and merging, and task status tracking.
+
+## Viva questions and answers
+
+### 1. What is the role of Jira in Agile software project management?
+Jira is used to plan, track, and manage Agile projects. It helps teams create user stories and tasks, organize them into sprints, monitor progress using Scrum boards, and manage issues throughout the development lifecycle.
+
+### 2. What is the purpose of integrating a DevOps CI pipeline with Jira?
+The integration connects project-management activities with development and testing. Code changes can be associated with Jira work items, while automated tests verify changes. This improves traceability, automation, and collaboration.

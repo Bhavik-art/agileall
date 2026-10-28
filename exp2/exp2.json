@@ -1,0 +1,10 @@
+{
+  "title": "To Perform Version Control Operations Using Git",
+  "description": "Install and configure Git, create a GitHub account and repository, and practise initialization, staging, commits, history, branches, and pushing changes.",
+  "links": [
+    "https://git-scm.com/downloads",
+    "https://github.com/join",
+    "https://github.com/",
+    "https://code.visualstudio.com/"
+  ]
+}

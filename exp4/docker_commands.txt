@@ -1,0 +1,24 @@
+# Check Docker installation
+docker --version
+docker info
+
+# Download and inspect an Ubuntu image
+docker pull ubuntu
+docker images
+
+# Create and enter a named Ubuntu container
+docker run -it --name ubuntu-lab ubuntu /bin/bash
+
+# Run these after exiting the container
+docker ps
+docker ps -a
+docker stop ubuntu-lab
+docker rm ubuntu-lab
+docker ps -a
+
+# Remove the image only after no containers depend on it
+docker image rm ubuntu
+
+# Build and run the sample application in this folder
+docker build -t exp4-hello .
+docker run --rm exp4-hello

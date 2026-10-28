@@ -1,0 +1,10 @@
+{
+  "title": "Continuous Integration Pipeline using Jenkins/GitHub Actions",
+  "description": "Set up Jenkins Freestyle jobs, execute commands, run Java and Python programs, and use build parameters.",
+  "files": [
+    "HelloJenkins.java",
+    "MultiplicationTable.java",
+    "multiplication_table.py",
+    "ci.yml"
+  ]
+}

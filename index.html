@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101827">
+<title>DevCourse — Agile & DevOps Lab</title>
+<style>
+:root{--bg:#f5f7fb;--panel:#fff;--ink:#182230;--muted:#687386;--line:#e4e9f1;--accent:#5b5ce2;--accent2:#e9eaff;--green:#16865c;--shadow:0 12px 35px rgba(24,34,48,.06)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}button,input{font:inherit}button{cursor:pointer}.app{min-height:100vh;display:grid;grid-template-columns:270px minmax(0,1fr)}.sidebar{background:#101827;color:#e9eef8;padding:22px 16px;display:flex;flex-direction:column;gap:22px;min-height:100vh;position:sticky;top:0;height:100vh;overflow:auto}.brand{display:flex;gap:11px;align-items:center;padding:0 8px}.brand-mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#7c7df8,#4b4dcc);display:grid;place-items:center;font-weight:900;color:white}.brand strong{display:block;font-size:16px;letter-spacing:.2px}.brand small{color:#a8b4c8;font-size:11px}.side-label{text-transform:uppercase;letter-spacing:1.2px;font-size:10px;color:#8c9ab0;font-weight:800;padding:0 10px;margin-bottom:7px}.nav{display:flex;flex-direction:column;gap:5px}.nav button{border:0;background:transparent;color:#c9d2e2;text-align:left;padding:10px 11px;border-radius:10px;display:flex;align-items:center;gap:10px;width:100%}.nav button:hover{background:#1a2639}.nav button.active{background:#292f56;color:#fff}.nav .num{font-size:11px;background:#263349;border-radius:7px;padding:2px 6px;margin-left:auto;color:#bac7dc}.sidebar-footer{margin-top:auto;border:1px solid #2c394d;border-radius:13px;padding:13px;color:#c0cbe0;font-size:12px}.sidebar-footer strong{display:block;color:white;margin-bottom:4px}.main{min-width:0}.topbar{height:72px;background:rgba(255,255,255,.88);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:0 30px;position:sticky;top:0;z-index:5;backdrop-filter:blur(14px)}.mobile-menu{display:none}.search{max-width:520px;flex:1;position:relative}.search input{width:100%;border:1px solid var(--line);border-radius:11px;padding:11px 14px 11px 39px;background:#f9fafc;outline:none}.search input:focus{border-color:#aaaaf6;box-shadow:0 0 0 3px #eeeeff}.search-icon{position:absolute;left:13px;top:9px;color:#8b95a7;font-size:18px}.top-actions{margin-left:auto;display:flex;align-items:center;gap:9px}.pill{border:1px solid var(--line);background:#fff;padding:8px 11px;border-radius:10px;color:#536074;font-size:12px}.avatar{width:34px;height:34px;border-radius:50%;background:#e6e7ff;color:#4e50bf;display:grid;place-items:center;font-weight:800}.content{max-width:1280px;margin:0 auto;padding:30px}.eyebrow{color:var(--accent);font-size:11px;letter-spacing:1.5px;font-weight:850;text-transform:uppercase}.hero{background:linear-gradient(120deg,#20274a,#343b75 62%,#595bd0);border-radius:20px;color:white;padding:30px;display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:25px;align-items:center;box-shadow:var(--shadow);overflow:hidden;position:relative}.hero:after{content:"";position:absolute;width:270px;height:270px;border:1px solid #ffffff19;border-radius:50%;right:-60px;top:-120px;box-shadow:0 0 0 32px #ffffff08,0 0 0 65px #ffffff06}.hero .eyebrow{color:#bfc3ff}.hero h1{font-size:clamp(25px,3vw,36px);line-height:1.16;margin:10px 0 12px;letter-spacing:-1px}.hero p{max-width:680px;color:#d8dcf0;margin:0 0 20px}.primary{border:0;background:#fff;color:#30346c;border-radius:10px;padding:11px 15px;font-weight:750}.hero-stats{display:grid;gap:10px;z-index:1}.stat{border:1px solid #ffffff28;background:#ffffff10;border-radius:13px;padding:13px}.stat strong{font-size:23px;display:block}.stat span{color:#d2d7f2;font-size:11px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin:28px 0 15px}.section-head h2{font-size:19px;margin:0;letter-spacing:-.3px}.section-head p{margin:4px 0 0;color:var(--muted);font-size:13px}.muted{color:var(--muted)}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.course-card{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:17px;box-shadow:0 3px 12px #18223004;transition:.18s;min-width:0}.course-card:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:#d1d3fa}.card-top{display:flex;align-items:center;justify-content:space-between;gap:10px}.iconbox{height:38px;width:38px;border-radius:11px;background:#eeeeff;color:#5355ca;display:grid;place-items:center;font-weight:850}.status{font-size:10px;font-weight:800;border-radius:20px;padding:5px 8px;background:#eef8f2;color:#178057}.status.pending{background:#f0f2f6;color:#748095}.course-card h3{font-size:15px;margin:14px 0 6px}.course-card p{color:var(--muted);font-size:12px;min-height:37px;margin:0 0 14px}.card-bottom{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #eef0f5;padding-top:12px;font-size:11px;color:var(--muted)}.text-btn{border:0;background:transparent;color:var(--accent);font-weight:800;padding:4px 0}.progress-wrap{height:6px;background:#eaedf4;border-radius:8px;overflow:hidden;margin:13px 0 5px}.progress-fill{height:100%;background:linear-gradient(90deg,#6264e8,#8889ff);width:0}.workspace{display:grid;grid-template-columns:minmax(0,1fr) 245px;gap:18px;margin-top:25px}.lesson-panel,.right-panel{background:#fff;border:1px solid var(--line);border-radius:16px;min-width:0}.lesson-header{padding:23px 24px;border-bottom:1px solid var(--line)}.crumb{font-size:11px;color:var(--muted);margin-bottom:9px}.lesson-header h2{font-size:24px;letter-spacing:-.5px;margin:0 0 8px}.lesson-header p{margin:0;color:var(--muted);font-size:13px}.lesson-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.action{border:1px solid var(--line);background:#fff;color:#39465a;border-radius:9px;padding:8px 11px;font-size:12px;font-weight:700}.action.primary-action{background:var(--accent);border-color:var(--accent);color:white}.lesson-body{padding:23px 24px}.lesson-body h2,.lesson-body h3,.lesson-body h4{line-height:1.3}.lesson-body h2{font-size:20px;margin:25px 0 10px}.lesson-body h3{font-size:16px;margin:23px 0 9px}.lesson-body p{margin:9px 0;color:#354154}.lesson-body ul,.lesson-body ol{padding-left:23px}.lesson-body li{margin:5px 0}.lesson-body a{color:#5053d4;text-decoration:none;overflow-wrap:anywhere}.lesson-body a:hover{text-decoration:underline}.codeblock{margin:13px 0 18px;border:1px solid #29354b;border-radius:12px;overflow:hidden;background:#111827;color:#e8edf7}.code-head{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;background:#1b2638;border-bottom:1px solid #303c50;font-size:11px;color:#b6c2d6}.code-head button{border:1px solid #3a4960;background:#26354a;color:#f2f5fb;border-radius:7px;padding:5px 9px;font-size:11px}.codeblock pre{margin:0;padding:16px;overflow:auto;font:12px/1.65 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre}.link-list{display:grid;gap:9px;margin:12px 0}.resource-link{border:1px solid var(--line);border-radius:10px;padding:11px 12px;display:flex;gap:10px;align-items:center;text-decoration:none;color:#303c4f;background:#fff}.resource-link:hover{border-color:#b9baf7;background:#fafaff}.resource-link span{min-width:0;overflow-wrap:anywhere}.resource-link small{display:block;color:var(--muted);font-size:10px}.right-panel{padding:17px;height:max-content;position:sticky;top:90px}.right-panel h3{font-size:13px;margin:0 0 13px}.check-row{display:flex;align-items:flex-start;gap:9px;font-size:12px;color:#536074;margin:12px 0}.check-row input{accent-color:var(--accent);margin-top:3px}.right-panel .progress-wrap{margin-top:14px}.resource-box{margin-top:20px;padding-top:17px;border-top:1px solid var(--line)}.resource-box p{font-size:11px;color:var(--muted);margin:6px 0 0}.empty{padding:30px;text-align:center;border:1px dashed #ccd3e0;border-radius:14px;color:var(--muted);background:#fff}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#172033;color:white;padding:10px 15px;border-radius:10px;box-shadow:var(--shadow);font-size:12px;z-index:20;display:none}.footer-note{color:#8b95a7;font-size:11px;text-align:center;padding:25px 0 5px}.hidden{display:none!important}
+@media(max-width:1050px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.workspace{grid-template-columns:minmax(0,1fr)}.right-panel{position:static;display:grid;grid-template-columns:1fr 1fr;gap:15px}.right-panel h3{grid-column:1/-1}.right-panel .resource-box{margin:0;padding:0;border:0}}
+@media(max-width:760px){.app{grid-template-columns:1fr}.sidebar{position:fixed;left:-290px;top:0;width:270px;z-index:15;transition:left .2s;box-shadow:var(--shadow)}.sidebar.open{left:0}.mobile-menu{display:inline-flex;border:1px solid var(--line);background:white;border-radius:9px;padding:8px}.topbar{padding:0 13px;height:64px}.top-actions .pill{display:none}.content{padding:17px}.hero{grid-template-columns:1fr;padding:23px}.hero-stats{grid-template-columns:repeat(3,1fr)}.stat{padding:10px}.stat strong{font-size:18px}.stat span{font-size:9px}.cards{grid-template-columns:1fr}.workspace{margin-top:18px}.lesson-header,.lesson-body{padding:18px}.right-panel{display:block}.right-panel .resource-box{margin-top:17px;padding-top:15px;border-top:1px solid var(--line)}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar" id="sidebar">
+  <div class="brand"><div class="brand-mark">DC</div><div><strong>DevCourse</strong><small>LAB LEARNING PORTAL</small></div></div>
+  <div><div class="side-label">Workspace</div><nav class="nav">
+    <button class="active" data-view="overview"><span>▦</span> Course overview</button>
+    <button data-view="all"><span>▤</span> All experiments <span class="num" id="navCount">0</span></button>
+  </nav></div>
+  <div><div class="side-label">Your course</div><nav class="nav" id="experimentNav"></nav></div>
+  <div class="sidebar-footer"><strong>Learn by doing</strong>Keep experiment notes, run code, and mark each lesson complete as you progress.</div>
+</aside>
+<main class="main">
+  <header class="topbar">
+    <button class="mobile-menu" id="menuBtn" aria-label="Open menu">☰</button>
+    <div class="search"><span class="search-icon">⌕</span><input id="searchInput" type="search" placeholder="Search experiments, code, links…" autocomplete="off"></div>
+    <div class="top-actions"><span class="pill">AGILE & DEVOPS LAB</span><div class="avatar">DC</div></div>
+  </header>
+  <div class="content">
+    <section class="hero" id="hero">
+      <div><div class="eyebrow">YOUR PRACTICAL LEARNING SPACE</div><h1>Build skills, one experiment at a time.</h1><p>Each experiment lives in its own folder. Load the aim, step-by-step implementation, code files, links, workflow, checklist, and result; copy code and track completion.</p><button class="primary" id="continueBtn">Continue learning →</button></div>
+      <div class="hero-stats"><div class="stat"><strong id="totalStat">0</strong><span>Experiments found</span></div><div class="stat"><strong id="doneStat">0</strong><span>Completed</span></div><div class="stat"><strong id="percentStat">0%</strong><span>Course progress</span></div></div>
+    </section>
+    <div id="overviewView">
+      <div class="section-head"><div><h2>Your learning path</h2><p>Choose an experiment to open its notes and implementation resources.</p></div><button class="action" id="reloadBtn">↻ Reload files</button></div>
+      <div class="cards" id="courseCards"></div>
+      <div class="section-head"><div><h2>Recently available</h2><p>Quick access to the experiments found in your folder.</p></div></div>
+      <div id="recentList"></div>
+    </div>
+    <div id="lessonView" class="hidden">
+      <div class="workspace">
+        <article class="lesson-panel">
+          <div class="lesson-header"><div class="crumb"><button class="text-btn" id="backBtn">Course overview</button> / <span id="lessonCrumb">Experiment</span></div><h2 id="lessonTitle">Choose an experiment</h2><p id="lessonDescription">Select an experiment from the course overview or sidebar.</p><div class="lesson-actions"><button class="action primary-action" id="completeBtn">✓ Mark as complete</button><button class="action" id="openSourceBtn">↗ Open source file</button><button class="action" id="printBtn">Print lesson</button></div></div>
+          <div class="lesson-body" id="lessonBody"><div class="empty">No lesson selected yet.</div></div>
+        </article>
+        <aside class="right-panel"><h3>Lesson checklist</h3><div id="checklist"></div><div class="progress-wrap"><div class="progress-fill" id="lessonProgress"></div></div><small class="muted" id="checkProgress">0 of 4 complete</small><div class="resource-box"><h3>Files loaded</h3><div id="fileInfo" class="muted" style="font-size:11px">No file selected</div><p>Files are loaded from the same folder as this HTML page.</p></div><div class="resource-box"><h3>Quick links</h3><div id="quickLinks" class="link-list"></div></div></aside>
+      </div>
+    </div>
+    <div id="allView" class="hidden"><div class="section-head"><div><h2>All experiments</h2><p>Search and open any loaded experiment.</p></div></div><div class="cards" id="allCards"></div></div>
+    <div class="footer-note">DevCourse · Local-first lab learning portal · Your completion marks stay in this browser</div>
+  </div>
+</main>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+/*
+ FILE NAMING — EACH EXPERIMENT HAS ITS OWN FOLDER
+ Put index.html beside the experiment folders currently available:
+   exp1/, exp2/, exp3/, exp4/, exp7/
+ Each folder should contain its lesson file (for example exp1/exp1.txt) and any code/resources.
+ Optional metadata inside each folder:
+   exp1/exp1.json with { "title": "...", "description": "...", "links": ["https://..."] }
+ The lesson file should be named expN.txt or expN.md. Code files can use any supported extension.
+ Static hosting cannot list folders automatically, so this page checks only the experiment folders listed below.
+ Serve it through a local server or deploy the files together to Vercel/GitHub Pages.
+*/
+const EXPERIMENT_IDS = [1, 2, 3, 4, 7];
+const EXTENSIONS = ["txt","md","html","py","js","ts","java","c","cpp","cs","php","sql","sh","json","yaml","yml","xml","css","go","rs","ipynb"];
+const CODE_EXT = new Set(["py","js","ts","java","c","cpp","cs","php","sql","sh","json","yaml","yml","xml","css","go","rs","ipynb"]);
+const state = {experiments:[], selected:null, view:"overview", completed:new Set(), checks:{}, query:""};
+const $ = id => document.getElementById(id);
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function showToast(message){const t=$("toast");t.textContent=message;t.style.display="block";clearTimeout(showToast.timer);showToast.timer=setTimeout(()=>t.style.display="none",2200);}
+function safeURL(raw){try{const u=new URL(raw,location.href);return ["http:","https:","mailto:"].includes(u.protocol)?u.href:null}catch{return null}}
+function isExternal(raw){return /^https?:\/\//i.test(raw)}
+async function fetchText(path){try{const r=await fetch(path,{cache:"no-store"});if(!r.ok)return null;return await r.text()}catch{return null}}
+function titleFrom(text,id){const line=(text||"").split(/\r?\n/).find(x=>x.trim());return line?line.replace(/^#{1,6}\s*/,"").replace(/^(title|experiment)\s*:\s*/i,"").slice(0,100):`Experiment ${id}`;}
+function parseLinks(text){const found=[];const re=/https?:\/\/[^\s<>"')\]]+/g;let m;while((m=re.exec(text||""))){const url=m[0].replace(/[.,;]+$/,"");if(!found.includes(url))found.push(url)}return found}
+function contentToHtml(raw){
+  const code=[];
+  let text=String(raw||"").replace(/\r/g,"");
+  text=text.replace(/```([\w.+#-]*)\n([\s\S]*?)```/g,(_,lang,src)=>{
+    const n=code.length;code.push({lang:lang||"code",src});return `\n@@CODE${n}@@\n`;
+  });
+
+  // Escape source text before formatting; restore only generated markup afterwards.
+  text=escapeHtml(text);
+  text=text.replace(/&lt;(https?:\/\/[^&\s]+)&gt;/g,'$1');
+
+  // Markdown headings
+  text=text.replace(/^######\s+(.+)$/gm,"<h4>$1</h4>")
+           .replace(/^#####\s+(.+)$/gm,"<h4>$1</h4>")
+           .replace(/^####\s+(.+)$/gm,"<h4>$1</h4>")
+           .replace(/^###\s+(.+)$/gm,"<h3>$1</h3>")
+           .replace(/^##\s+(.+)$/gm,"<h2>$1</h2>")
+           .replace(/^#\s+(.+)$/gm,"<h2>$1</h2>");
+
+  // Bold and inline code / emphasis
+  text=text.replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>")
+           .replace(/\*(.+?)\*/g,"<em>$1</em>")
+           .replace(/`([^`]+)`/g,"<code>$1</code>");
+
+  // Make URLs clickable without changing the surrounding text.
+  text=text.replace(/(https?:\/\/[^\s<]+[^\s<.,;:!?)\]])/g,
+    '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+
+  // Convert consecutive Markdown bullets and numbered items into semantic lists.
+  const lines=text.split("\n");
+  const out=[];
+  let paragraph=[], listType=null, listItems=[];
+  const flushParagraph=()=>{if(paragraph.length){out.push("<p>"+paragraph.join("<br>")+"</p>");paragraph=[];}};
+  const flushList=()=>{if(listItems.length){out.push(`<${listType}>`+listItems.map(x=>`<li>${x}</li>`).join("")+`</${listType}>`);listItems=[];listType=null;}};
+  for(const line of lines){
+    const trimmed=line.trim();
+    if(!trimmed){flushParagraph();flushList();continue;}
+    if(/^@@CODE\d+@@$/.test(trimmed)){flushParagraph();flushList();out.push(trimmed);continue;}
+    const heading=trimmed.match(/^<h[2-4]\b.*<\/h[2-4]>$/);
+    if(heading){flushParagraph();flushList();out.push(trimmed);continue;}
+    const bullet=trimmed.match(/^[-*]\s+(.+)$/);
+    const numbered=trimmed.match(/^\d+[.)]\s+(.+)$/);
+    if(bullet||numbered){
+      flushParagraph();
+      const nextType=numbered?"ol":"ul";
+      if(listType&&listType!==nextType)flushList();
+      listType=nextType;listItems.push((bullet||numbered)[1]);continue;
+    }
+    flushList();paragraph.push(trimmed);
+  }
+  flushParagraph();flushList();
+  text=out.join("\n").replace(/@@CODE(\d+)@@/g,(_,i)=>renderCode(code[+i].src,code[+i].lang));
+  return text;
+}
+function renderCode(src,lang){return `<div class="codeblock"><div class="code-head"><span>${escapeHtml(lang||"code")}</span><button type="button" class="copy-code" data-code="${encodeURIComponent(src)}">Copy code</button></div><pre><code>${escapeHtml(src)}</code></pre></div>`}
+function getCodeFiles(exp){return exp.files.filter(f=>CODE_EXT.has(f.ext) && !["exp"+exp.id+".txt","requirements.txt","README.md"].includes(f.name));}
+function renderLinks(links){if(!links.length)return '<p class="muted">No links found in this experiment.</p>';return links.map((url,i)=>{const safe=safeURL(url);return safe?`<a class="resource-link" href="${escapeHtml(safe)}" target="_blank" rel="noopener noreferrer"><span>↗ <strong>${escapeHtml(new URL(safe).hostname)}</strong><small>${escapeHtml(url)}</small></span></a>`:""}).join("")}
+function experimentDescription(exp){return exp.description||`${exp.files.length} file${exp.files.length===1?"":"s"} available · Open to read steps and code.`}
+function filteredExperiments(){const q=state.query.trim().toLowerCase();if(!q)return state.experiments;return state.experiments.filter(e=>[e.title,e.description,e.id,...e.files.map(f=>f.name+" "+f.text)].join(" ").toLowerCase().includes(q))}
+function cardHTML(e){const done=state.completed.has(e.id);return `<article class="course-card"><div class="card-top"><div class="iconbox">${String(e.id).padStart(2,"0")}</div><span class="status ${done?"":"pending"}">${done?"COMPLETED":"AVAILABLE"}</span></div><h3>${escapeHtml(e.title)}</h3><p>${escapeHtml(experimentDescription(e))}</p><div class="progress-wrap"><div class="progress-fill" style="width:${done?100:0}%"></div></div><div class="card-bottom"><span>${e.files.length} file(s)</span><button class="text-btn open-exp" data-id="${e.id}">Open lesson →</button></div></article>`}
+function renderCards(){const list=filteredExperiments();$("courseCards").innerHTML=list.length?list.map(cardHTML).join(""):'<div class="empty" style="grid-column:1/-1">No experiments match your search. Check the file names or try another keyword.</div>';$("allCards").innerHTML=list.length?list.map(cardHTML).join(""):'<div class="empty" style="grid-column:1/-1">No experiments found.</div>';$("recentList").innerHTML=state.experiments.slice(0,5).map(e=>`<button class="resource-link open-exp" data-id="${e.id}" style="width:100%;text-align:left"><span><strong>Experiment ${e.id}: ${escapeHtml(e.title)}</strong><small>${escapeHtml(e.files.map(f=>f.name).join(" · "))}</small></span><span style="margin-left:auto">→</span></button>`).join("")||'<div class="empty">No files found yet.</div>'; $("experimentNav").innerHTML=state.experiments.map(e=>`<button data-id="${e.id}" class="${state.selected===e.id?"active":""}" data-nav-exp><span>▹</span><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Exp ${e.id} · ${escapeHtml(e.title)}</span>${state.completed.has(e.id)?'<span class="num">✓</span>':""}</button>`).join("")||'<div style="padding:8px 10px;color:#8c9ab0;font-size:12px">No experiments loaded</div>';updateStats()}
+function updateStats(){const total=state.experiments.length,done=state.experiments.filter(e=>state.completed.has(e.id)).length,pct=total?Math.round(done/total*100):0;$("totalStat").textContent=total;$("doneStat").textContent=done;$("percentStat").textContent=pct+"%";$("navCount").textContent=total}
+function setView(view){state.view=view;$("overviewView").classList.toggle("hidden",view!=="overview");$("lessonView").classList.toggle("hidden",view!=="lesson");$("allView").classList.toggle("hidden",view!=="all");document.querySelectorAll("[data-view]").forEach(b=>b.classList.toggle("active",b.dataset.view===view));if(view!=="lesson")state.selected=null;renderCards();$("sidebar").classList.remove("open")}
+function openExperiment(id){const e=state.experiments.find(x=>x.id===Number(id));if(!e)return;state.selected=e.id;state.view="lesson";$("overviewView").classList.add("hidden");$("allView").classList.add("hidden");$("lessonView").classList.remove("hidden");document.querySelectorAll("[data-view]").forEach(b=>b.classList.remove("active"));$("lessonCrumb").textContent=`Experiment ${e.id}`;$("lessonTitle").textContent=e.title;$("lessonDescription").textContent=experimentDescription(e);$("fileInfo").innerHTML=`<div style="margin-bottom:6px"><strong>${escapeHtml(e.folder||("exp"+e.id+"/"))}</strong></div>`+e.files.map(f=>`<div>• ${escapeHtml(f.name)}</div>`).join("");$("openSourceBtn").disabled=!e.primary;$("openSourceBtn").dataset.path=e.primary||"";
+  const body=[];
+  if(e.contentFile){body.push(contentToHtml(e.contentFile.text))}
+  else if(e.metadata){body.push(`<h2>About this experiment</h2><p>${escapeHtml(e.description||"")}</p>`);if(e.metadata.steps)body.push(contentToHtml(Array.isArray(e.metadata.steps)?e.metadata.steps.map((s,i)=>`${i+1}. ${s}`).join("\n"):e.metadata.steps))}
+  else body.push(`<div class="empty">No .txt or .md lesson text found. Add <strong>exp${e.id}.txt</strong> or <strong>exp${e.id}.md</strong> beside index.html to show your implementation steps here.</div>`);
+  const codes=getCodeFiles(e);
+  if(codes.length){body.push("<h2>Code files</h2><p>Copy any code snippet, or use the file link to open it separately.</p>");for(const f of codes){body.push(`<h3>${escapeHtml(f.name)}</h3>${renderCode(f.text,f.ext)}<p><a href="${escapeHtml(f.path)}" target="_blank" rel="noopener noreferrer">↗ Open ${escapeHtml(f.name)}</a></p>`)}}
+  const links=[...new Set([...(e.metadata?.links||[]),...e.files.flatMap(f=>parseLinks(f.text))])];
+  body.push("<h2>Links & resources</h2><div class=\"link-list\">"+renderLinks(links)+"</div>");
+  $("lessonBody").innerHTML=body.join("\n");
+  const checkLabels=["Read the experiment steps","Review the code and resources","Run or verify the implementation","Record observations / result"];
+  const checks=state.checks[e.id]||[];
+  $("checklist").innerHTML=checkLabels.map((label,i)=>`<label class="check-row"><input type="checkbox" data-check="${i}" ${checks.includes(i)?"checked":""}><span>${label}</span></label>`).join("");
+  updateCheckProgress();$("quickLinks").innerHTML=links.length?renderLinks(links.slice(0,4)):'<span class="muted" style="font-size:11px">No external links detected.</span>';
+  renderCards();window.scrollTo({top:0,behavior:"smooth"});
+}
+function updateCheckProgress(){const e=state.experiments.find(x=>x.id===state.selected);if(!e)return;const checks=state.checks[e.id]||[];$("lessonProgress").style.width=(checks.length/4*100)+"%";$("checkProgress").textContent=`${checks.length} of 4 complete`;const done=state.completed.has(e.id);$("completeBtn").textContent=done?"✓ Completed — mark incomplete":"✓ Mark as complete";$("completeBtn").classList.toggle("primary-action",!done)}
+async function loadExperiments(){
+  $("courseCards").innerHTML='<div class="empty" style="grid-column:1/-1">Loading experiment folders…</div>';
+  const found=[];
+  // Exact file manifest for the experiment folders currently in this project.
+  // This avoids probing dozens of non-existent extensions and generating noisy 404 logs.
+  const FILE_MANIFEST = {
+    1: ["exp1.txt","exp1.json","app.py","test_app.py","ci.yml","requirements.txt","README.md"],
+    2: ["exp2.txt","exp2.json","git_commands.sh","README.md"],
+    3: ["exp3.txt","exp3.json","HelloJenkins.java","MultiplicationTable.java","multiplication_table.py","README.md",".github/workflows/ci.yml"],
+    4: ["exp4.txt","exp4.json","Dockerfile","app.py","docker_commands.txt","README.md"],
+    7: ["exp7.txt","exp7.json","lambda_function.py","test_event.json","README.md"]
+  };
+  const extensionOf = name => {
+    if(name === "Dockerfile") return "dockerfile";
+    const leaf=name.split("/").pop();
+    return leaf.includes(".") ? leaf.split(".").pop().toLowerCase() : "text";
+  };
+  for(const id of EXPERIMENT_IDS){
+    const folder=`exp${id}/`;
+    const names=(FILE_MANIFEST[id]||[`exp${id}.txt`,`exp${id}.json`]).map(name=>({
+      name:name.split("/").pop(),
+      path:folder+name,
+      ext:extensionOf(name)
+    }));
+    const results=await Promise.all(names.map(async n=>{
+      const text=await fetchText(n.path);
+      return text===null?null:{...n,text};
+    }));
+    const files=results.filter(Boolean);
+    if(!files.length)continue;
+    let metadata=null;
+    const json=files.find(f=>f.name===`exp${id}.json`)||files.find(f=>f.name==="metadata.json");
+    if(json){try{metadata=JSON.parse(json.text)}catch{}}
+    const contentFile=files.find(f=>f.name===`exp${id}.txt`)
+      ||files.find(f=>f.name===`exp${id}.md`)
+      ||files.find(f=>f.name==="README.md")
+      ||files.find(f=>f.name==="index.html");
+    const title=(metadata&&metadata.title)||(contentFile?titleFrom(contentFile.text,id):`Experiment ${id}`);
+    found.push({
+      id,title,
+      description:(metadata&&metadata.description)||"",
+      metadata,files,
+      contentFile:contentFile&&contentFile.ext!=="html"?contentFile:null,
+      primary:contentFile?.path||files[0].path,
+      folder
+    });
+  }
+  state.experiments=found;
+  if(!found.length){
+    $("courseCards").innerHTML=`<div class="empty" style="grid-column:1/-1"><strong>No experiment folders were detected.</strong><br><br>Create the listed folders beside this HTML page: <code>exp1/</code>, <code>exp2/</code>, <code>exp3/</code>, <code>exp4/</code>, and <code>exp7/</code>. Each folder should contain its matching lesson file, such as <code>exp7/exp7.txt</code>.<br><br>For reliable loading, open the page through a local web server or deploy the folders and HTML together. Browsers often block file loading when index.html is opened directly from your computer.</div>`;
+    $("recentList").innerHTML="";$("allCards").innerHTML="";$("experimentNav").innerHTML='<div style="padding:8px;color:#8c9ab0;font-size:12px">Expected folders: exp1/, exp2/, exp3/, exp4/, exp7/</div>';
+  }else renderCards();
+  if(state.selected&&found.some(e=>e.id===state.selected))openExperiment(state.selected);
+}
+document.addEventListener("click",async e=>{
+ const open=e.target.closest(".open-exp,[data-nav-exp]");if(open){openExperiment(open.dataset.id);return}
+ const copy=e.target.closest(".copy-code");if(copy){const src=decodeURIComponent(copy.dataset.code||"");try{await navigator.clipboard.writeText(src);copy.textContent="Copied ✓";showToast("Code copied to clipboard")}catch{const ta=document.createElement("textarea");ta.value=src;document.body.appendChild(ta);ta.select();document.execCommand("copy");ta.remove();copy.textContent="Copied ✓";showToast("Code copied")}setTimeout(()=>copy.textContent="Copy code",1600);return}
+ const view=e.target.closest("[data-view]");if(view){setView(view.dataset.view);return}
+});
+document.addEventListener("change",e=>{if(e.target.matches("[data-check]")&&state.selected){const id=state.selected;const checks=new Set(state.checks[id]||[]);const n=Number(e.target.dataset.check);e.target.checked?checks.add(n):checks.delete(n);state.checks[id]=[...checks];updateCheckProgress()}});
+$("searchInput").addEventListener("input",e=>{state.query=e.target.value;renderCards();if(state.view==="lesson"&&state.selected){/* keep current lesson open while search filters lists */}});
+$("reloadBtn").addEventListener("click",loadExperiments);
+$("continueBtn").addEventListener("click",()=>{const next=state.experiments.find(e=>!state.completed.has(e.id))||state.experiments[0];if(next)openExperiment(next.id);else setView("all")});
+$("backBtn").addEventListener("click",()=>setView("overview"));
+$("completeBtn").addEventListener("click",()=>{if(!state.selected)return;state.completed.has(state.selected)?state.completed.delete(state.selected):state.completed.add(state.selected);try{localStorage.setItem("devcourse_completed",JSON.stringify([...state.completed]))}catch{}updateStats();updateCheckProgress();renderCards()});
+$("openSourceBtn").addEventListener("click",()=>{const path=$("openSourceBtn").dataset.path;if(path)window.open(path,"_blank","noopener")});
+$("printBtn").addEventListener("click",()=>window.print());
+$("menuBtn").addEventListener("click",()=>$("sidebar").classList.toggle("open"));
+try{state.completed=new Set(JSON.parse(localStorage.getItem("devcourse_completed")||"[]"))}catch{}
+loadExperiments();
+</script>
+</body>
+</html>
