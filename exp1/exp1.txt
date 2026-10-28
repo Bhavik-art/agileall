@@ -128,6 +128,7 @@ jobs:
 Commit and push the workflow:
 
 ```bash
+git checkout -b SCRUM-11-ci-pipeline
 git add .
 git commit -m "SCRUM-11 Configure CI pipeline"
 git push
