@@ -1,0 +1,11 @@
+{
+  "title": "To Deploy Multi-Service Applications Using Docker Compose",
+  "description": "Deploy a Python Flask web application and MySQL database as separate services using Docker Compose.",
+  "files": [
+    "app.py",
+    "requirements.txt",
+    "Dockerfile",
+    "docker-compose.yml",
+    "README.md"
+  ]
+}

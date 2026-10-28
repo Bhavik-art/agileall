@@ -1,0 +1,202 @@
+AY: 2026-27
+Class: TE-AI&DS
+Semester: V
+Course Code: 2015119
+Course Name: Agile Software Development & DevOps Lab
+
+Experiment No.: 04
+Title: To Deploy Multi-Service Applications Using Docker Compose
+
+1. Aim
+To deploy a multi-service application consisting of a Python Flask web application and a MySQL database using Docker Compose.
+
+2. Objectives
+1. Understand Docker Compose and multi-service applications.
+2. Create a Flask web application.
+3. Configure MySQL as a separate service.
+4. Create a Dockerfile for the Flask application.
+5. Create docker-compose.yml to define multiple services.
+6. Build and start multiple containers together.
+7. Connect Flask with MySQL using the Compose service name.
+8. Check service status and logs.
+9. Stop and restart the multi-service application.
+
+3. Requirements
+- Windows OS
+- Docker Desktop
+- Visual Studio Code
+- Git Bash / Command Prompt / PowerShell
+- Web browser
+- Internet connection
+
+4. Theory
+
+4.1 Multi-Service Application
+A multi-service application consists of multiple services that work together. In this experiment, the Flask web application and MySQL database run as separate Docker containers.
+
+4.2 Docker Compose
+Docker Compose is used to define and run multi-container applications. Services, images, ports, environment variables, and dependencies are specified in docker-compose.yml.
+
+4.3 Services Used
+Two services are used: web for the Flask application and db for MySQL.
+
+5. Architecture
+Docker Compose starts two services on a shared Compose network:
+- web: Flask application, container name flask-web, port 5000
+- db: MySQL database, container name mysql-db, container port 3306 (host port 3307)
+Flask communicates with MySQL using the service hostname db. The browser accesses Flask at http://localhost:5000.
+
+6. Project Structure
+docker-compose-demo/
+├── app.py
+├── requirements.txt
+├── Dockerfile
+└── docker-compose.yml
+
+7. Procedure
+
+Step 1: Create Project Folder
+Create a folder named docker-compose-demo and open it in Visual Studio Code.
+
+Step 2: Create app.py
+Use the provided app.py. It serves a home route and attempts to connect to MySQL using host db, user root, password rootpassword and database testdb. It returns a success message when connected or a database connection error otherwise.
+
+Step 3: Create requirements.txt
+Add:
+Flask
+mysql-connector-python
+
+Step 4: Create Dockerfile
+Use the provided Dockerfile to install requirements, copy the application and expose port 5000.
+
+Step 5: Create docker-compose.yml
+The Compose file defines:
+- web: builds from the current folder, names the container flask-web, maps 5000:5000, and depends on db.
+- db: uses mysql:8.0, names the container mysql-db, sets MYSQL_ROOT_PASSWORD=rootpassword and MYSQL_DATABASE=testdb, and maps host port 3307 to container port 3306.
+
+8. Explanation of docker-compose.yml
+
+8.1 web service
+The web service represents the Flask application. It is built from the Dockerfile, is named flask-web, and maps host port 5000 to container port 5000.
+
+8.2 db service
+The db service uses the mysql:8.0 image and is named mysql-db. It creates testdb and sets rootpassword as the root password.
+
+8.3 depends_on
+depends_on specifies that the web service depends on the db service.
+
+8.4 Service Communication
+The Flask application connects to MySQL using hostname db, the Docker Compose service name resolvable on the Compose network.
+
+8.5 Port Mapping
+Flask: 5000:5000
+MySQL: 3307:3306
+Host port 3307 avoids conflict with another MySQL service on host port 3306. Inside the Compose network, Flask connects to db:3306.
+
+9. Build and Start All Services
+Run in the project directory:
+docker compose up --build
+This builds the Flask image, pulls the MySQL image if needed, creates a network and starts both services.
+
+10. Check Running Containers
+Run:
+docker ps
+The output should show flask-web and mysql-db running, with mappings 5000:5000 and 3307:3306.
+
+11. Check Compose Services
+Run:
+docker compose ps
+
+12. Access the Application
+Open http://localhost:5000
+Expected output:
+Flask application is running and connected to MySQL using Docker Compose!
+
+13. Check Flask Logs
+docker compose logs web
+
+14. Check MySQL Logs
+docker compose logs db
+
+15. Check All Service Logs
+docker compose logs
+
+16. Run Services in Background
+docker compose up -d --build
+Verify using docker compose ps.
+
+17. Stop and Remove Services
+docker compose down
+This stops and removes the Compose containers and network.
+
+18. Start Services Again
+docker compose up -d
+docker compose ps
+Open http://localhost:5000 to verify the application.
+
+19. Important Docker Compose Commands
+- docker compose up --build: Build and start all services.
+- docker compose up -d --build: Build and start services in background.
+- docker compose up -d: Start services in background.
+- docker compose ps: Display Compose service status.
+- docker compose logs: Display logs of all services.
+- docker compose logs web: Display Flask logs.
+- docker compose logs db: Display MySQL logs.
+- docker compose down: Stop and remove Compose containers and network.
+- docker ps: Display running Docker containers.
+
+20. Observation
+Service: Flask Web | Container: flask-web | Port mapping: 5000:5000
+Service: MySQL Database | Container: mysql-db | Port mapping: 3307:3306
+
+21. Result
+The multi-service application was deployed using Docker Compose. The Flask web application and MySQL database run as separate containers, and Flask communicates with MySQL using the Compose network.
+
+22. Conclusion
+This experiment demonstrated how Docker Compose defines and deploys a multi-service application. The Flask web service and MySQL database service were configured in docker-compose.yml, started together, verified using Compose commands and accessed through a browser.
+
+23. Viva Questions and Answers
+Q1. What is Docker Compose?
+A: A tool used to define and run multi-container applications using a YAML configuration file.
+
+Q2. What is a multi-service application?
+A: An application made up of multiple services that work together, such as a web application and database.
+
+Q3. What file is used by Docker Compose?
+A: docker-compose.yml.
+
+Q4. How many services are used in this experiment?
+A: Two: web for Flask and db for MySQL.
+
+Q5. Why are Flask and MySQL in separate containers?
+A: For isolation and independent management of each service.
+
+Q6. What is the purpose of depends_on?
+A: It specifies that the web service depends on the db service.
+
+Q7. Why does Flask use host='db'?
+A: db is the Compose service name used for service-to-service communication.
+
+Q8. What does docker compose up do?
+A: It creates and starts the services defined in docker-compose.yml.
+
+Q9. What does docker compose down do?
+A: It stops and removes the Compose containers and network.
+
+Q10. What does docker compose ps do?
+A: It displays the status of the Compose services.
+
+Q11. Why is port 3307 used instead of 3306 on the host?
+A: To avoid conflict with another MySQL service using host port 3306.
+
+Q12. What does 3307:3306 mean?
+A: 3307 is the host port and 3306 is the MySQL container port.
+
+Q13. How does Flask communicate with MySQL?
+A: Through the Compose network using the service name db.
+
+Q14. What does -d mean?
+A: It runs services in detached/background mode.
+
+24. Final Practical Flow
+docker-compose.yml defines web and db → Docker Compose starts both containers → shared Docker network allows Flask to connect to MySQL → browser accesses Flask at http://localhost:5000.

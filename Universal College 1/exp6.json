@@ -1,0 +1,12 @@
+{
+  "title": "To automate application deployment using GitHub and Jenkins",
+  "description": "Build, test, and deploy a Flask application using GitHub Actions, Jenkins, and Docker.",
+  "files": [
+    "app.py",
+    "requirements.txt",
+    "Dockerfile",
+    "Jenkinsfile",
+    ".github/workflows/deploy.yml",
+    "README.md"
+  ]
+}

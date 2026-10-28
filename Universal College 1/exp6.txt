@@ -1,0 +1,154 @@
+AY: 2026-27
+Class: TE-AI&DS
+Semester: V
+Course Code: 2015119
+Course Name: Agile Software Development & DevOps Lab
+
+Experiment No.: 06
+Title: To automate application deployment using GitHub and Jenkins
+
+1. Aim
+To automate application deployment using GitHub and Jenkins.
+
+2. Objectives
+1. Understand automated application deployment using CI/CD.
+2. Integrate a Flask application with GitHub.
+3. Automate build, test and deployment using GitHub Actions.
+4. Automate build, test and deployment using Jenkins.
+5. Deploy the Flask application using Docker.
+
+3. Theory
+Continuous Integration and Continuous Deployment (CI/CD) automate the process of building, testing and deploying an application. In this experiment, a simple Flask application is packaged using Docker. Part 1 uses GitHub Actions to automatically execute the workflow when code is pushed to the main branch. Part 2 uses Jenkins to check out the GitHub repository, test the application, build a Docker image and deploy it in a Docker container.
+
+4. Requirements
+- Computer/laptop with Windows or Linux
+- Python 3.11
+- Git
+- Docker Desktop
+- GitHub account and repository
+- Jenkins server
+- Web browser
+
+5. Project Structure
+student-flask-app/
+├── app.py
+├── requirements.txt
+├── Dockerfile
+├── Jenkinsfile
+└── .github/
+    └── workflows/
+        └── deploy.yml
+
+PART 1 — AUTOMATED DEPLOYMENT USING GITHUB
+
+6. Create Flask Application
+Create app.py with the provided project file.
+
+7. Create requirements.txt
+Add Flask.
+
+8. Create Dockerfile
+Use the provided Dockerfile to install dependencies, copy the app, expose port 5000 and run app.py.
+
+9. Test Application Using Docker
+Build: docker build -t student-flask-app .
+Run: docker run -d -p 5000:5000 --name student-app student-flask-app
+Check: docker ps
+Open http://localhost:5000
+Expected output: Hello! Application deployed automatically.
+Stop and remove the test container when finished:
+docker stop student-app
+docker rm student-app
+
+10. Create GitHub Repository
+Create a repository named student-flask-app and push the project:
+git init
+git add .
+git commit -m "Add Flask Docker application"
+git branch -M main
+git remote add origin https://github.com/YOUR-USERNAME/student-flask-app.git
+git push -u origin main
+
+11. GitHub Actions Workflow
+The workflow in .github/workflows/deploy.yml runs on pushes to main. It checks out code, sets up Python 3.11, installs requirements, compiles app.py, builds the Docker image, runs a container and verifies it with docker ps.
+
+12. Push Workflow to GitHub
+git add .
+git commit -m "Add GitHub Actions deployment"
+git push origin main
+
+13. Verify GitHub Actions
+Open GitHub → Repository → Actions and inspect each workflow step. A successful run should complete checkout, setup, dependency installation, syntax test, Docker build, container run and verification.
+
+14. Automatic Deployment Test
+Modify the response in app.py, then commit and push:
+git add .
+git commit -m "Update application message"
+git push origin main
+A push to main automatically starts the GitHub Actions workflow. Note: this workflow demonstrates building and running a container on the GitHub-hosted runner; it does not publish to a persistent external server.
+
+PART 2 — AUTOMATED DEPLOYMENT USING JENKINS
+
+15. Start Jenkins
+Start Jenkins and open http://localhost:8080. Jenkins must have access to Git, Python and Docker, and permission to execute Docker commands.
+
+16. Create Jenkins Pipeline Job
+Jenkins Dashboard → New Item → enter student-flask-deployment → select Pipeline → OK.
+
+17. Configure Pipeline from GitHub
+Select Pipeline script from SCM, choose Git, enter your repository URL, set branch to */main and Script Path to Jenkinsfile.
+
+18. Create Jenkinsfile
+Use the supplied Jenkinsfile in the root of the repository. It checks out code, installs dependencies, tests app.py, builds the Docker image, stops/removes the previous container if present, starts the new container and verifies deployment.
+
+19. Push Jenkinsfile to GitHub
+git add Jenkinsfile
+git commit -m "Add Jenkins deployment pipeline"
+git push origin main
+
+20. Run Jenkins Pipeline
+Open Jenkins → student-flask-deployment → Build Now. Open the build and select Console Output.
+
+Pipeline sequence:
+Checkout Code → Install Dependencies → Test Application → Build Docker Image → Stop Old Container → Deploy Application → Verify Deployment
+
+21. Verify Jenkins Deployment
+Run docker ps and open http://localhost:5000.
+Expected output: Hello! Application deployed automatically.
+
+22. Automate Jenkins on Git Push
+Configure a GitHub webhook or SCM polling so a push to the repository triggers the pipeline automatically.
+
+23. Observation
+The Flask application was integrated with GitHub. GitHub Actions checked out, tested, built and ran the Docker application. Jenkins performed the same CI/CD stages using a Jenkinsfile.
+
+24. Result
+The application was deployed through the demonstrated GitHub Actions and Jenkins workflows using Docker.
+
+25. Conclusion
+This experiment demonstrated automated application deployment using GitHub Actions and Jenkins. GitHub Actions provides GitHub-integrated workflow automation, while Jenkins provides flexible pipeline-based automation. Docker packages and runs the application consistently.
+
+26. Viva Questions
+Q1. What is CI/CD?
+Answer: CI/CD automates code integration, testing, building and deployment.
+
+Q2. What is GitHub Actions?
+Answer: A GitHub-integrated workflow automation service.
+
+Q3. What is Jenkins?
+Answer: An automation server commonly used for CI/CD pipelines.
+
+Q4. What is a Jenkinsfile?
+Answer: A file that defines a Jenkins pipeline as code.
+
+Q5. Why is Docker used?
+Answer: It packages the application and dependencies into a container.
+
+Q6. What triggers the GitHub Actions workflow?
+Answer: A push to the main branch in this experiment.
+
+Q7. What is the purpose of the Docker build stage?
+Answer: It creates the Docker image for the application.
+
+Q8. How can Jenkins be triggered automatically?
+Answer: Using a GitHub webhook or SCM polling.
