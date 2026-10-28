@@ -89,15 +89,17 @@ Part B: Add the code
 1. Open the function's code editor.
 2. Replace the starter code with the following Python code:
 
-    import json
+import json
 
-    def lambda_handler(event, context):
-        name = event.get("name", "Student")
-        message = f"Hello, {name}! Welcome to AWS Lambda."
-        return {
-            "statusCode": 200,
-            "body": json.dumps({"message": message})
-        }
+def lambda_handler(event, context):
+    name = event.get("name", "Student")
+    message = f"Hello, {name}! Welcome to AWS Lambda."
+
+    return {
+        "statusCode": 200,
+        "body": json.dumps({"message": message})
+    }
+
 
 3. Save or deploy the code using the console's “Deploy” button.
 
